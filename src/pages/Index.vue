@@ -1,11 +1,12 @@
 <template>
-  <q-page class="flex column" :class="backgroundColor">
-    <div class="col q-pa-xl">
+  <q-page class="flex column elementToFadeInAndOut" :class="backgroundColor">
+    <div class="col q-pa-xl shadow">
       <q-input v-model="search" 
       placeholder="Search" 
       @keyup.enter="getWeatherBySearch"
       dark 
-      borderless>
+      borderless
+      class="searchbar">
         <template v-slot:before>
           <q-icon name="my_location" 
           @click="getLocation"/>
@@ -23,7 +24,7 @@
     </div>
 
     <template v-if="weatherData">
-    <div class="col text-white text-center">
+    <div class="col text-white text-center elementToFadeInAndOut shadow">
           <div class="text-h4 text-weight-light">
             {{weatherData.name}}
           </div>
@@ -38,24 +39,16 @@
           </div>
         </div>
 
-        <div class="col text-center">
+        <div class="col text-center icon shadow2">
           <img :src="`http://openweathermap.org/img/wn/${ weatherData.weather[0].icon}@2x.png`">
         </div>
     </template>
 
     <template v-else>
-      <div class="col column text-center text-white">
+      <div class="col column text-center text-white shadow">
         <div class="col text-h2 text-weight-thin">
           Quasar<br>Weather
           </div>
-          <q-btn 
-          class="col" 
-          flat
-          @click="getLocation">
-            <q-icon left size="3em" name="my_location" />
-            <div>Find my location</div>
-          </q-btn>
-        
       </div>
     </template>
 
@@ -138,24 +131,60 @@ export default {
 </script>
 
 <style lang="scss">
-  .q-page {
-  background: linear-gradient(to top, #e952af, #1d2671); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    &.bg-night {
-      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
-    &.bg-day {
-      background: linear-gradient(to bottom, #43c6ac, #f8ffae); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
+.q-page {
+background: linear-gradient(to top, #e952af, #1d2671); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  &.bg-night {
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
+  &.bg-day {
+    background: linear-gradient(to bottom, #43c6ac, #f8ffae); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+}
 
-  .degreee {
-    top: -44px;
-  }
+.searchbar {
+  max-width:90%;
+  left:50%;
+  top:20vh;
+  position:absolute;
+  transform:translate(-50%,-50%);
+  text-align:center;
+}
 
-  .skyline {
-    flex: 0 0 100px;
-    //bakcground:
-    background-size: contain;
-    background-position: center bottom;
-  }
+.degreee {
+  top: -44px;
+}
+
+.skyline {
+  flex: 0 0 100px;
+  //bakcground:
+  background-size: contain;
+  background-position: center bottom;
+}
+
+.icon {
+  max-width:90%;
+  left:50%;
+  top:65%;
+  position:absolute;
+  transform:translate(-50%,-50%);
+  text-align:center;
+}
+
+.shadow {
+  filter: drop-shadow(8px 8px 5px rgba(0, 0, 0, 0.952));
+}
+
+.shadow2 {
+  filter: drop-shadow(8px 8px 5px rgba(0, 0, 0, 0.352));
+}
+
+.elementToFadeInAndOut {
+    animation: fadeinout 5s linear forwards;
+}	
+
+@keyframes fadeinout {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    90% { opacity: 1; }
+}
 </style>
