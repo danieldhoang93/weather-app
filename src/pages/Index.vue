@@ -1,5 +1,6 @@
 <template>
   <q-page class="flex column elementToFadeInAndOut" :class="backgroundColor">
+
     <div class="col q-pa-xl shadow">
       <q-input v-model="search" 
       placeholder="Search" 
@@ -47,12 +48,12 @@
     <template v-else>
       <div class="col column text-center text-white shadow">
         <div class="col text-h2 text-weight-thin">
-          Quasar<br>Weather
+          The<br>Weather
           </div>
       </div>
     </template>
 
-    <div class="col skyline">
+    <div class="col backgroundPicture">
 
     </div>
   </q-page>
