@@ -30,7 +30,7 @@
           </div>
 
           <div class="text-h6 text-weight-light">
-            {{weatherData.weather[0].main}}
+            {{weatherData.weather[0].description}}
           </div>
 
           <div class="text-h1 text-weight-thin q-my-lg relative-position">
@@ -164,7 +164,7 @@ background: linear-gradient(to top, #e952af, #1d2671); /* W3C, IE 10+/ Edge, Fir
 .icon {
   max-width:90%;
   left:50%;
-  top:65%;
+  top:70%;
   position:absolute;
   transform:translate(-50%,-50%);
   text-align:center;
