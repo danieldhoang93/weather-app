@@ -137,7 +137,7 @@ background: linear-gradient(to top, #e952af, #1d2671); /* W3C, IE 10+/ Edge, Fir
     background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   &.bg-day {
-    background: linear-gradient(to bottom, #43c6ac, #f8ffae); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom, #5433ff, #20bdff, #a5fecb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 }
 
