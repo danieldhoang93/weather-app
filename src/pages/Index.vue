@@ -1,6 +1,12 @@
 <template>
   <q-page class="flex column elementToFadeInAndOut" :class="backgroundColor">
-
+    <div :class="saturate">
+      <img src="~/assets/sun.png" class="sun"/>
+      <img src="~/assets/sun.png" class="sun1"/>
+      <img src="~/assets/sun.png" class="sun2"/>
+      <img src="~/assets/sun.png" class="sun3"/>
+    </div>
+    
     <div class="col q-pa-xl shadow">
       <q-input v-model="search" 
       placeholder="Search" 
@@ -84,6 +90,12 @@ export default {
           return 'bg-day'
         }
       }
+    },
+    saturate() {
+      var d = new Date().getHours();//want to base saturation and colors off the locations time
+      if (this.weatherData) {
+       return this.weatherData.weather[0].icon.endsWith('n') ? 'unsaturate rotatingSun' : 'saturate rotatingSun' 
+      }
     }
   },
   methods: {
@@ -142,6 +154,88 @@ background: linear-gradient(to top, #e952af, #1d2671); /* W3C, IE 10+/ Edge, Fir
   }
 }
 
+.rotatingSun {
+  position: absolute;
+  margin: auto;
+  top: 400px;
+  left: 0;
+  right: 0;
+}
+
+.sun {
+  width:90vw;
+  max-width: 750px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .3;
+  animation-name: spin;
+  animation-duration: 30000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+.sun1 {
+  width:82vw;
+  max-width:680px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .3;
+  animation-name: spin;
+  animation-duration: 50000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+.sun2 {
+  width:70vw;
+  max-width:580px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .3;
+  animation-name: spin;
+  animation-duration: 70000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;  
+}
+
+.sun3 {
+  width:55vw;
+  max-width:350px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .3;
+  animation-name: spin;
+  animation-duration: 70000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+.saturate {
+  //0-300%
+  filter: saturate(200%);
+}
+
+.unsaturate {
+  //0-200%
+  filter: saturate(30%);
+}
+
 .searchbar {
   max-width:90%;
   left:50%;
@@ -183,9 +277,27 @@ background: linear-gradient(to top, #e952af, #1d2671); /* W3C, IE 10+/ Edge, Fir
     animation: fadeinout 5s linear forwards;
 }	
 
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
 @keyframes fadeinout {
     0% { opacity: 0; }
     30% { opacity: 1; }
     90% { opacity: 1; }
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
 </style>
